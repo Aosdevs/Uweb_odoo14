@@ -1,0 +1,68 @@
+# Ferramentas
+build-essential
+ca-certificates
+dirmngr
+fonts-noto-cjk
+gcc
+g++
+locales
+python3-pykcs11
+#supervisor
+curl
+unzip
+git
+wget
+gettext-base
+openssh-client
+postgresql-client
+net-tools
+dnsutils
+iputils-ping
+gnupg2
+node-less
+npm
+mc
+xz-utils
+##### Dependências da Localização Brasileira #####
+libssl-dev
+libffi-dev
+libxmlsec1-dev
+python3.8-dev
+python3.8-distutils
+python3-pip
+python3-wheel
+python3-setuptools
+python3-openssl
+python3-cffi
+libssl1.1
+
+##### Dependências Odoo #####
+libxml2-dev
+libxslt1-dev
+libevent-dev
+libsasl2-dev
+libldap2-dev
+libjpeg-dev
+libtiff5-dev
+libopenjp2-7-dev
+zlib1g-dev
+libfreetype6-dev
+liblcms2-dev
+libwebp-dev
+libharfbuzz-dev
+libfribidi-dev
+libxcb1-dev
+
+### Broken dependencies ###
+
+# libpq-dev : Depends: libpq5 (= 11.20-0+deb10u1) but 16.0-1.pgdg100+1 is to be installed
+# libpq-dev
+
+# libjpeg8-dev
+# Package libjpeg8-dev is not available, but is referred to by another package.
+# 0.837 This may mean that the package is missing, has been obsoleted, or
+# 0.837 is only available from another source
+# 0.837 However the following packages replace it:
+# 0.837   libjpeg62-turbo-dev
+# 0.837 
+# 0.889 E: Package 'libjpeg8-dev' has no installation candidate
