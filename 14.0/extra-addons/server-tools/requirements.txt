@@ -1,0 +1,15 @@
+# generated from manifests external_dependencies
+acme
+astor
+contextvars; python_version < '3.7'
+cryptography<23.2.0
+dataclasses
+dnspython
+josepy
+odoorpc
+openpyxl
+openupgradelib
+pygount
+pysftp
+sentry_sdk<=1.9.0
+unidecode

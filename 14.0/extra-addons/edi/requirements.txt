@@ -1,0 +1,11 @@
+# generated from manifests external_dependencies
+dateparser
+factur-x
+invoice2data
+ovh
+phonenumbers
+pypdf
+pypdf>=3.1.0
+pyyaml
+regex
+xmlschema
