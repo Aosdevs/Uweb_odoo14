@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="medical_patient_add_commission_id" model="ir.ui.view">
+            <field name="name">medical.patient.add.commission</field>
+            <field name="model">medical.patient</field>
+            <field name="inherit_id" ref="pragtech_dental_management.medical_patient_view"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//notebook" position="inside">
+                    <!-- Add your fields or attributes here -->
+                    <page name="commission" string="Commission" groups="base.group_erp_manager">
+                        <group>
+
+                            <field name="referring_doctor_idd" string="Commissioned Dentist"/>
+                        </group>
+                    </page>
+                </xpath>
+
+            </field>
+        </record>
+
+        <record id="group_commission_referring_doctor_id" model="res.groups">
+            <field name="name">Commission Referring Doctor</field>
+
+        </record>
+        <record id="referring_doctor_wizard_view_form" model="ir.ui.view">
+            <field name="name">referring.doctor.wizard.view</field>
+            <field name="model">referring.doctor.wizard</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="date_from"/>
+                                <field name="date_to"/>
+                            </group>
+                            <group>
+                                <field name="referring_doctor_id"/>
+                                <field name="self_commission" groups="report_referral_doctor.group_commission_referring_doctor_id"/>
+                                <field name="other_commission" groups="report_referral_doctor.group_commission_referring_doctor_id"/>
+
+                            </group>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button string="Export Xlsx" name="export_referring_doctor" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="referring_doctor_wizard_view_action" model="ir.actions.act_window">
+            <field name="name">Referral Doctor Wizard</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">referring.doctor.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p>
+            </field>
+        </record>
+        <!-- This Menu Item must have a parent and an action -->
+
+        <menuitem id="referring_doctor_wizard_view_menu_id" name="Referral Doctor Commission"
+                  parent="pragtech_dental_management.dental_report_menu" action="referring_doctor_wizard_view_action"
+                  sequence="7"/>
+
+
+        <!--        # record for exist report xlsx-->
+
+        <record id="report_action_id_referring_doctor" model="ir.actions.report">
+            <field name="name">Referral Doctor report</field>
+            <field name="model">referring.doctor.wizard</field>
+            <field name="report_type">xlsx</field>
+            <field name="report_name">report_referral_doctor.excel_report_referral_doctor</field>
+            <field name="report_file">report_referral_doctor.excel_report_referral_doctor</field>
+            <field name="print_report_name">'Referral Doctor Commission'</field>
+            <field name="binding_model_id" ref="model_referring_doctor_wizard"/>
+            <field name="binding_type">report</field>
+        </record>
+
+    </data>
+</odoo>

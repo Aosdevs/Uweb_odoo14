@@ -29,10 +29,8 @@ pandas
 openpyxl
 imgkit==1.1.0
 pyfcm
-BrazilFiscalReport
 coverage==5.5
 flake8
-pypdf
 python-Levenshtein-wheels==0.13.1
 erpbrasil.assinatura>=1.7.0
 erpbrasil.base>=2.3.0

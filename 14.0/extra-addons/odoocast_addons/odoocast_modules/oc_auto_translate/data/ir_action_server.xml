@@ -1,0 +1,13 @@
+<odoo>
+    <data>
+        <!-- Defina a ação de servidor -->
+        <record id="action_server_translate_text" model="ir.actions.server">
+            <field name="name">Traduzir Texto(s) Selecionado(s)</field>
+            <field name="model_id" ref="model_ir_translation"/>
+            <field name="state">code</field>
+            <field name="code">
+                records.auto_generate_translation()
+            </field>
+        </record>
+    </data>
+</odoo>

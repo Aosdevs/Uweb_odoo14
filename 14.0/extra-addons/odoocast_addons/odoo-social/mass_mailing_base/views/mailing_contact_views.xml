@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="mailing_contact_view_tree" model="ir.ui.view">
+        <field name="name">mailing.contact.view.tree.inherit.sms</field>
+        <field name="model">mailing.contact</field>
+        <field name="inherit_id" ref="mass_mailing.mailing_contact_view_tree"/>
+        <field name="priority">20</field>
+        <field name="arch" type="xml">
+            <xpath expr="/tree/*" position="before">
+                <header>
+                    <button name="add_contact_to_mailing_list" string="Adicionar Contato a uma Lista" type="object" class="oe_highlight" />
+                </header>
+            </xpath>
+        </field>
+    </record>
+</odoo>

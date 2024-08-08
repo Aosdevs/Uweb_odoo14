@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <!-- Hiding Emails Marketing and SMS Marketing menuitem -->
+        <record model="ir.ui.menu" id="mass_mailing.mass_mailing_menu_root">
+            <field name="groups_id" eval="[(6,0,[ref('base.group_no_one')])]"/>
+        </record>
+
+        <record model="ir.ui.menu" id="mass_mailing_sms.mass_mailing_sms_menu_root">
+            <field name="groups_id" eval="[(6,0,[ref('base.group_no_one')])]"/>
+        </record>
+
+</odoo>
+

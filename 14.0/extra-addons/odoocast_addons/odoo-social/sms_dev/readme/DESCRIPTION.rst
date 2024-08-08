@@ -1,0 +1,1 @@
+This module implements the IAP Provider SMSDev to send SMS.
