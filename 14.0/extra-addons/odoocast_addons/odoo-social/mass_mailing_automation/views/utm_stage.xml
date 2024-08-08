@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record model="ir.ui.view" id="utm_stage_view_tree">
+        	<field name="name">utm.stage.view.tree</field>
+        	<field name="model">utm.stage</field>
+        	<field name="arch" type="xml">
+            		<tree string="UTM Stage" multi_edit="1" sample="1">
+						<field name="sequence" widget="handle"/>
+            			<field name="name"/>
+						<field name="id"/>
+            		</tree>
+		</field>
+ 	</record>
+
+	<record id="mass_mailing_automation_utm_stage_action" model="ir.actions.act_window">
+		<field name="name">Estagios</field>
+		<field name="res_model">utm.stage</field>
+		<field name="view_mode">tree</field>
+		<field name="view_id" ref="utm_stage_view_tree"/>
+	</record>
+
+</odoo>

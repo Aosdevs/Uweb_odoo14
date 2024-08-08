@@ -1,0 +1,18 @@
+<odoo>
+    <data>
+        <!-- Inherit Form View to Modify it -->
+        <record id="account_payment_form_inherit" model="ir.ui.view">
+            <field name="name">account payment</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//button[@name='action_post']" position="after">
+                    <field name="is_sent" invisible="1" />
+                        <button name="post_facebook_leads" string=" send fb event" type="object" class="oe_highlight" attrs="{'invisible': ['|',('is_sent', '=', True),('payment_type','!=','inbound')]}"/>
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>

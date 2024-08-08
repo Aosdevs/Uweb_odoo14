@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <menuitem
+                id="mass_mailing_automation_main_menu"
+                name="Marketing Automation"
+                web_icon="mass_mailing_automation,static/description/icon.png"
+                groups="mass_mailing.group_mass_mailing_user" />
+
+        <menuitem
+                name="Campanhas"
+                id="mass_mailing_automation_utm_campaign_menu"
+                parent="mass_mailing_automation_main_menu"
+                sequence="0"
+                action="mass_mailing_automation_utm_campaign_action" />
+        <menuitem
+                name="Lista de Contatos"
+                id="mass_mailing_automation_mailing_list_menu"
+                parent="mass_mailing_automation_main_menu"
+                sequence="20"
+                action="mass_mailing.action_view_mass_mailing_lists" />
+
+        <menuitem
+                name="Contatos"
+                id="mass_mailing_automation_mailing_contacts_menu"
+                parent="mass_mailing_automation_main_menu"
+                sequence="30"
+                action="mass_mailing.action_view_mass_mailing_contacts" />
+
+        <menuitem
+                name="Configuration"
+                id="mass_mailing_automation_configuration_menu"
+                parent="mass_mailing_automation_main_menu"
+                sequence="100" />
+
+        <menuitem
+                name="Blacklist"
+                id="mass_mailing_automation_blacklist_menu"
+                action="mail.mail_blacklist_action"
+                parent="mass_mailing_automation_configuration_menu" />
+
+        <menuitem
+                name="Modelo de E-mail"
+                id="mass_mailing_automation_mail_template_menu"
+                action="mass_mailing_automation.mass_mailing_automation_mail_template_action"
+                parent="mass_mailing_automation_configuration_menu" />
+
+        <menuitem
+                name="Estagios"
+                id="mass_mailing_automation_utm_stages_menu"
+                action="mass_mailing_automation.mass_mailing_automation_utm_stage_action"
+                parent="mass_mailing_automation_configuration_menu" />
+
+</odoo>
+

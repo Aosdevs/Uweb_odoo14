@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="id_medical_patient_birth_day_id" model="ir.ui.view">
+            <field name="name">medical.patient.birth_day</field>
+            <field name="model">medical.patient</field>
+            <field name="inherit_id" ref="pragtech_dental_management.medical_patient_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group/group[2]" position="inside">
+                    <field name="first_appointment_date"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="id_edit_dental_appointment" model="ir.ui.view">
+            <field name="model">medical.appointment</field>
+            <field name="inherit_id" ref="clinic_req.edit_dental_appointment"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='saleperson_id']" position="after">
+                    <field name="first_appointment" readonly="1"/>
+                </xpath>
+<!--                <xpath expr="//group/group[2]" position="inside">-->
+<!--                    <field name="first_appointment"/>-->
+<!--                </xpath>-->
+            </field>
+        </record>
+    </data>
+</odoo>

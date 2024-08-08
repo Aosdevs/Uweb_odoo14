@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_utm_campaign_schedule_date,access_utm_campaign_schedule_date,model_utm_campaign_schedule_date,base.group_user,1,1,1,1
