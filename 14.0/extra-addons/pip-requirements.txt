@@ -44,6 +44,8 @@ nfselib.paulistana
 mtranslate
 signxml
 pytrustnfe3
+pydff
 pysigep
+BrazilFiscalReport
 iugu
 lxml==4.6.3
