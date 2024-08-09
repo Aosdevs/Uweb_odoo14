@@ -46,6 +46,5 @@ signxml
 pytrustnfe3
 pydff
 pysigep
-brazilfiscalreport
 iugu
 lxml==4.6.3
