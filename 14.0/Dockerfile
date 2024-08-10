@@ -3,7 +3,7 @@ FROM python:3.8
 
 # Instale dependências básicas e o Odoo
 RUN apt-get update && apt-get install -y \
-    curl \
+    git \
     build-essential \
     libffi-dev \
     libssl-dev \
@@ -14,19 +14,13 @@ RUN apt-get update && apt-get install -y \
     libxmlsec1 \
     python3-dev \
     pkg-config \
-    git \
     && rm -rf /var/lib/apt/lists/*
 
 # Crie o diretório para o Odoo
 RUN mkdir -p /opt/odoo
 
-# Baixe o Odoo 14
-RUN curl -L -o odoo-14.0.tar.gz https://github.com/odoo/odoo/archive/refs/tags/14.0.tar.gz
-
-# Extraia o Odoo 14
-RUN tar -xzf odoo-14.0.tar.gz \
-    && mv odoo-14.0/* /opt/odoo/ \
-    && rm -rf odoo-14.0 odoo-14.0.tar.gz
+# Clone o repositório do Odoo na branch 14
+RUN git clone -b 14.0 --single-branch https://github.com/odoo/odoo.git /opt/odoo
 
 # Instale os requisitos do Odoo
 WORKDIR /opt/odoo
