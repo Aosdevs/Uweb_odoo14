@@ -20,7 +20,7 @@ RUN apt-get update && apt-get install -y \
 RUN mkdir -p /opt/odoo
 
 # Clone o repositório do Odoo na branch 14
-RUN git clone --branch 14 --single-branch https://github.com/odoo/odoo.git /opt/odoo
+RUN git clone -b 14.0 --single-branch https://github.com/odoo/odoo.git /opt/odoo
 
 # Instale os requisitos do Odoo
 WORKDIR /opt/odoo
