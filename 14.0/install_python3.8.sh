@@ -1,6 +1,7 @@
 #!/bin/sh
 
 # install PPA
+apt install -y software-properties-common
 add-apt-repository ppa:deadsnakes/ppa -y
 
 # update and install
