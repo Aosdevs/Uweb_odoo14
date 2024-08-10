@@ -49,3 +49,4 @@ pysigep
 brazilfiscalreport
 iugu
 lxml==4.6.3
+brazilcep
