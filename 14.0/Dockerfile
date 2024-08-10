@@ -1,9 +1,8 @@
-# Use a imagem base com Python 3.8
-FROM python:3.8
+FROM odoo:14
 
-# Instale dependências básicas e o Odoo
+# Instale dependências necessárias para o Python 3.8
+USER root
 RUN apt-get update && apt-get install -y \
-    git \
     build-essential \
     libffi-dev \
     libssl-dev \
@@ -14,29 +13,36 @@ RUN apt-get update && apt-get install -y \
     libxmlsec1 \
     python3-dev \
     pkg-config \
-    && rm -rf /var/lib/apt/lists/*
+    wget \
+    libbz2-dev \
+    libreadline-dev \
+    libsqlite3-dev \
+    zlib1g-dev \
+    && apt-get clean
 
-# Clone o repositório do Odoo na branch 14
-RUN git clone -b 14.0 --single-branch https://github.com/odoo/odoo.git /opt/odoo
+# Baixe, compile e instale o Python 3.8
+RUN wget https://www.python.org/ftp/python/3.8.9/Python-3.8.9.tgz \
+    && tar -xzf Python-3.8.9.tgz \
+    && cd Python-3.8.9 \
+    && ./configure --enable-optimizations \
+    && make -j$(nproc) \
+    && make altinstall \
+    && cd .. \
+    && rm -rf Python-3.8.9 Python-3.8.9.tgz
+
+# Crie um link simbólico para o python3.8
+RUN ln -s /usr/local/bin/python3.8 /usr/bin/python3.8 \
+    && ln -s /usr/local/bin/pip3.8 /usr/bin/pip3.8
+
+# Copie os addons extras
+COPY ./extra-addons /usr/lib/python3/dist-packages/odoo/extra-addons
 
 # Defina o diretório de trabalho
 WORKDIR /usr/lib/python3/dist-packages/odoo/extra-addons
 
-# Atualize pip, wheel e setuptools
-RUN pip3 install wheel setuptools==58.0.0
-
-# Instale os requisitos do Odoo
-RUN pip3 install -r ./requirements.txt
-
-# Adicione os addons extras
-COPY ./extra-addons  /usr/lib/python3/dist-packages/odoo/extra-addons
+# Use pip3.8 para instalar as dependências
+RUN pip3.8 install --upgrade pip wheel setuptools \
+    && pip3.8 install -r ./pip-requirements.txt
 
 # Copie o arquivo de configuração do Odoo
 COPY ./odoo.conf /etc/odoo/
-
-# Defina o diretório de trabalho e o ponto de entrada
-ENTRYPOINT ["odoo"]
-CMD ["-c", "/etc/odoo/odoo.conf"]
-
-# Exponha a porta padrão do Odoo
-EXPOSE 8069
