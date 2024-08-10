@@ -25,4 +25,4 @@ WORKDIR /usr/lib/python3/dist-packages/odoo/extra-addons
 RUN pip3 install --upgrade pip wheel setuptools \
     && pip3 install -r ./pip-requirements.txt
 
-COPY ./odoo.conf /etc/odoo/
+COPY ./odoo.conf /etc/odoo/odoo.conf
