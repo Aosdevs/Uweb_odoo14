@@ -16,14 +16,11 @@ RUN apt-get update && apt-get install -y \
     pkg-config \
     && rm -rf /var/lib/apt/lists/*
 
-# Crie o diretório para o Odoo
-RUN mkdir -p /opt/odoo
-
 # Clone o repositório do Odoo na branch 14
 RUN git clone -b 14.0 --single-branch https://github.com/odoo/odoo.git /opt/odoo
 
 # Defina o diretório de trabalho
-WORKDIR /opt/odoo
+WORKDIR /usr/lib/python3/dist-packages/odoo/extra-addons
 
 # Atualize pip, wheel e setuptools
 RUN pip3 install wheel setuptools==58.0.0
@@ -32,7 +29,7 @@ RUN pip3 install wheel setuptools==58.0.0
 RUN pip3 install -r ./requirements.txt
 
 # Adicione os addons extras
-COPY ./extra-addons /opt/odoo/addons
+COPY ./extra-addons  /usr/lib/python3/dist-packages/odoo/extra-addons
 
 # Copie o arquivo de configuração do Odoo
 COPY ./odoo.conf /etc/odoo/
