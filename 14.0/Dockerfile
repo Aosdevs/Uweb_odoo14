@@ -26,7 +26,7 @@ RUN git clone -b 14.0 --single-branch https://github.com/odoo/odoo.git /opt/odoo
 WORKDIR /opt/odoo
 
 # Atualize pip, wheel e setuptools
-RUN pip install --upgrade pip3 wheel setuptools==58.0.0
+RUN pip3 install wheel setuptools==58.0.0
 
 # Instale os requisitos do Odoo
 RUN pip install -r requirements.txt
