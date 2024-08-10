@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y \
 
 COPY ./install_python3.8.sh /tmp
 
-RUN /tmp/install_python3.8.sh
+RUN chmod +x /tmp/install_python3.8.sh && /tmp/install_python3.8.sh
 
 COPY ./extra-addons /usr/lib/python3/dist-packages/odoo/extra-addons
 
