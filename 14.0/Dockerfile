@@ -29,7 +29,7 @@ WORKDIR /opt/odoo
 RUN pip3 install wheel setuptools==58.0.0
 
 # Instale os requisitos do Odoo
-RUN pip install -r requirements.txt
+RUN pip3 install -r ./requirements.txt
 
 # Adicione os addons extras
 COPY ./extra-addons /opt/odoo/addons
